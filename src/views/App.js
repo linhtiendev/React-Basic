@@ -1,6 +1,14 @@
 import logo from './logo.svg';
 import './App.scss';
+import TestComponent from './Example/TestComponent';
 
+/**
+ * có 2 loại components
+ * class component / function component (function, arrow)
+ *  
+ */
+
+// const App  = () => {
 function App() {
   return (
     <div className="App">
@@ -17,6 +25,7 @@ function App() {
         >
           Learn React
         </a>
+        <TestComponent />
       </header>
     </div>
   );
