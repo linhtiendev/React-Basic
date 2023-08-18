@@ -3,8 +3,8 @@ import React from "react";
 // class TestComponent kế thừa React.Component
 class TestComponent extends React.Component {
     state = {
-        name: 'Liti ne',
-        age: '22'
+        name: '', // khởi tạo giá trị rỗng
+        age: ''
     };
     // -> có 2 cách in ra state
     /*
@@ -14,15 +14,24 @@ class TestComponent extends React.Component {
     // this chính là bản thân class, dùng dấu . để tham chiếu đến 1 method
     */
 
+    // event => gọi đến object của html
+    // target => trả ra 1 element của html
+    // value => gọi đến thuộc tính value của html
     handleOnchangeName = (event) => {
         this.setState({
-            name: event.target.value
+            name: event.target.value, // nhập giá trị thì state sẽ được cập nhật
+            age: 'snake'
+            // event.target sẽ trả ra 1 biến input -> gọi đến thuộc tính value của nó
+            // -> sẽ lấy được giá trị của input hiện tại
+            // lấy được các biến hiện tại
+            // muốn cập nhật lại state thì dùng setState()
         })
     }
 
     handleOnClickAlert = () => {
         alert("Hellooooo")
     }
+    // khi thay đổi input react -> set lại state -> render -> re-render 
     render() {
         // let name = 'Liti'
         return (
