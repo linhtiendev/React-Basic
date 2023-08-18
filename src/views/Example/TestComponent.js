@@ -19,12 +19,19 @@ class TestComponent extends React.Component {
             name: event.target.value
         })
     }
+
+    handleOnClickAlert = () => {
+        alert("Hellooooo")
+    }
     render() {
         // let name = 'Liti'
         return (
             <>
                 <div>
-                    {/* nhập dữ liệu realtime */}
+                    {/* nhập dữ liệu realtime 
+                        -> event trong onChange là event của html DOM
+                        -> nhờ event mới có thể lấy được giá trị
+                    */}
                     <input value={this.state.name} type="text" 
                         onChange={(event) => this.handleOnchangeName(event)}
                     /> <br/>
@@ -32,6 +39,9 @@ class TestComponent extends React.Component {
                 </div>
                 <div>
                     Im {this.state['age']} years old
+                </div>
+                <div className="third">
+                    <button onClick={() => this.handleOnClickAlert()}>Click me</button>
                 </div>
             </>
         )
