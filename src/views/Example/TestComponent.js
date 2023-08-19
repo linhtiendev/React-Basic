@@ -24,6 +24,16 @@ class TestComponent extends React.Component {
         });
     };
 
+    // props lọc để xóa phần tử
+    // dùng hàm filter để lọc id phần tử
+    deleteAJob = (job) => {
+        this.setState({
+            arrJobs: [
+                ...this.state.arrJobs.filter((item) => item.id !== job.id),
+            ],
+        });
+    };
+
     render() {
         return (
             <>
@@ -32,6 +42,7 @@ class TestComponent extends React.Component {
                 <ChildComponent
                     arrJobs={this.state.arrJobs}
                     // truyền state mảng arrJobs
+                    deleteAJob={this.deleteAJob}
                 />
             </>
         );
