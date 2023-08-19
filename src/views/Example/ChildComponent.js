@@ -2,68 +2,62 @@ import React from "react";
 
 
 class ChildComponent extends React.Component {
-
-    // khởi tạo state rỗng
+    // tạo state chứa phần tử showjobs là false
     state = {
-        firstName: "",
-        lastName: ""
+        showJobs: false,
     }
 
-    // lưu state đã được thay đổi
-    handleChangeFirstName = (event) => {
-        this.setState({ 
-            firstName: event.target.value 
-        });
-    }
-    handleChangeLastName = (event) => {
-        this.setState({ 
-            lastName: event.target.value
+    handleShowHide = () => {
+        this.setState({
+            // showJobs bằng false -> dùng dấu ! là phủ định lại
+            // => showJobs bằng true
+            showJobs: !this.state.showJobs,
         })
     }
-    handleSubmit = (event) => {
-        event.preventDefault(); // hàm không tải lại website
-        console.log("check data input", this.state);
 
-    }
-    /*
-    -> tạo 1 form để lưu fname lname trong input 
-    -> mỗi lần onChange đẫ lưu lại
-    -> khi click submit thì nó lấy data đó truyền lên API
-    */
     render() {
-        // let name = this.props.name;
-        // let age = this.props.age;
-        // cách 2
+        let { arrJobs } = this.props;
 
-        let {name, age, arrJobs} = this.props;
-        // nhận props từ cha
-
-        // this.props là 1 object
-        // cách rút gọn
-
-        console.log(this.props);
+        // lấy state
+        let {showJobs} = this.state;
+        // Dùng điều kiện so sánh giá trị biến showJobs
+        // điều kiện đúng -> lấy phần tử đầu tiên
+        let check = showJobs === true ? 'showJobs true' : 'showJobs false';
+        console.log("check: ", check);
         return (
             <>
-                {/* nhận props từ component cha */}
-                {/* <div>Child Component: {this.props.name} - {this.props.age}</div> */}
-                {/* cách 1 */}
-                <div>Child Component: {name} - {age}</div>
+                {/* state showJobs bằng true thì ẩn nút show */}
+                {/* state showJobs bằng false thì hiện nút show */}
 
-                {/* xử lý props cha truyền xuống */}
-                <div className="array-job-list">
-                    {
-                        arrJobs.map((item , index) => {
-                            return (
-                                // dùng map để tạo ra arr mới
-                                // mỗi 1 đưa con nên có 1 key props
-                                // item đại diện cho từng phần tử trong object
-                                <div key={item.id}>
-                                    {item.title} - {item.salary}
-                                </div>
-                            )
-                        })
-                    }
-                </div>
+                {/* đk showJobs = false thì in ra */}
+                { showJobs === false ? 
+                    <div>
+                        <button onClick={()=> this.handleShowHide()}>Show</button>
+                    </div>
+                // showJobs bằng true thì in ra
+                :
+                    <>
+                    <div className="array-job-list">
+                        {
+                            arrJobs.map((item , index) => {
+                                return (
+                                    <div key={item.id}>
+                                        {item.title} - {item.salary}
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
+                    <div>
+                        {/* showJobs bằng true thì hiện */}
+                        <button
+                            onClick={()=> this.handleShowHide()}
+                        >
+                            Hide
+                        </button>
+                    </div>
+                    </>
+                }
             </>
         )
     }
