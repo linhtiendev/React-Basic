@@ -1,12 +1,17 @@
 import React from "react";
-
+import ChildComponent from "./ChildComponent";
 
 class TestComponent extends React.Component {
 
     // khởi tạo state rỗng
     state = {
         firstName: "",
-        lastName: ""
+        lastName: "",
+        arrJobs: [
+            { id: 'job1', title: 'Dev', salary: '500$'},
+            { id: 'job2', title: 'Tester', salary: '400$'},
+            { id: 'job3', title: 'BA', salary: '300$'}
+        ],
     }
 
     // lưu state đã được thay đổi
@@ -54,7 +59,14 @@ class TestComponent extends React.Component {
                         value="Submit"
                         onClick={(event) => this.handleSubmit(event)}
                     />
-                </form> 
+                </form>
+                <ChildComponent
+                    // nhận data từ state
+                    name={this.state.firstName}
+                    age={22}
+                    arrJobs={this.state.arrJobs}
+                    // truyền state mảng arrJobs
+                />  
             </>
         )
     }
