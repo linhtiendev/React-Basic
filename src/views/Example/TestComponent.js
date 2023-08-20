@@ -34,6 +34,20 @@ class TestComponent extends React.Component {
         });
     };
 
+    // hàm khi muốn gọi api, xử lí một vài dữ liệu
+    // -> so sánh hiện tại và tương lai
+    // có tác dụng giữa con và cha -> cha thay đổi
+    // -> muốn update lại con -> dùng hàm này
+
+    componentDidUpdate(prevProps, prevState) {
+        console.log("did update");
+    }
+
+    // Hàm DidMount là nơi thích hợp để gọi api
+    componentDidMount() {
+        console.log("did mount");
+    }
+
     render() {
         return (
             <>
