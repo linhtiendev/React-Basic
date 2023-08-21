@@ -2,6 +2,7 @@ import "./App.scss";
 
 import TestComponent from "./Example/TestComponent";
 import ListTodo from "./Todos/ListTodo";
+import ListUser from "./Users/ListUser";
 
 import Nav from "./Nav/Nav";
 import Home from "./Example/Home";
@@ -22,6 +23,9 @@ function App() {
                         </Route>
                         <Route path="/about">
                             <TestComponent />
+                        </Route>
+                        <Route path="/user">
+                            <ListUser />
                         </Route>
                     </Switch>
                 </header>
