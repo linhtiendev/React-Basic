@@ -25,12 +25,13 @@ class ListTodo extends React.Component {
                 ...this.state.arrList.filter((item) => item.id !== list.id),
             ],
         });
-        toast.error("Deleted a user!"); // Toastify
+        toast.success("Deleted a user!"); // Toastify
     };
 
     render() {
         return (
             <>
+                <p>Todo App </p>
                 <InputTodo addNewUser={this.addNewUser} />
                 <ListInputTodo
                     arrList={this.state.arrList}
