@@ -5,7 +5,7 @@
 
 // dùng khi muốn nó lưu trữ dl gì
 const initState = {
-    user: [
+    users: [
         { id: 1, name: "LiTi" },
         { id: 2, name: "MiNi" },
     ],
