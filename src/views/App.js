@@ -3,6 +3,7 @@ import "./App.scss";
 import TestComponent from "./Example/TestComponent";
 import ListTodo from "./Todos/ListTodo";
 import ListUser from "./Users/ListUser";
+import UserDetail from "./Users/UserDetail";
 
 import Nav from "./Nav/Nav";
 import Home from "./Example/Home";
@@ -24,8 +25,12 @@ function App() {
                         <Route path="/about">
                             <TestComponent />
                         </Route>
-                        <Route path="/user">
+                        <Route path="/user" exact>
                             <ListUser />
+                        </Route>
+                        {/* dùng dấu : để lấy được tham số */}
+                        <Route path="/user/:id">
+                            <UserDetail />
                         </Route>
                     </Switch>
                 </header>
