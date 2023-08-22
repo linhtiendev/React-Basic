@@ -16,6 +16,7 @@ function App() {
                 <header className="App-header">
                     <Nav />
                     <Switch>
+                        {/* Dùng tag Switch khi muốn render chính xác route trên giao diện */}
                         <Route exact path="/">
                             <Home />
                         </Route>
